@@ -9,19 +9,23 @@ async function getWeather() {
 
   const apiKey = "edeb498f6915433ebb6134905251509";
 
-const url = `https://api.weatherapi.com/v1/current.json?key=YOUR_API_KEY&q=${city}&aqi=yes`;
-
+  // ✅ Use correct variable and API key
+  const url = `https://api.weatherapi.com/v1/current.json?key=${apiKey}&q=${location}&aqi=yes`;
 
   try {
+    resultDiv.innerHTML = "⏳ Fetching weather data...";
+
     const response = await fetch(url);
     if (!response.ok) throw new Error("Location not found");
-    
+
     const data = await response.json();
 
     resultDiv.innerHTML = `
       <h3>${data.location.name}, ${data.location.country}</h3>
       <p>🌡 Temperature: ${data.current.temp_c}°C</p>
       <p>🌥 Condition: ${data.current.condition.text}</p>
+      <p>💧 Humidity: ${data.current.humidity}%</p>
+      <p>💨 Wind: ${data.current.wind_kph} kph</p>
       <img src="${data.current.condition.icon}" alt="Weather icon">
     `;
   } catch (error) {
