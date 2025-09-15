@@ -8,7 +8,8 @@ async function getWeather() {
   }
 
   const apiKey = "edeb498f6915433ebb6134905251509";
- const url = `https://api.weatherapi.com/v1/current.json?key=${apiKey}&q=${location}&aqi=yes`;
+
+const url = `https://api.weatherapi.com/v1/current.json?key=YOUR_API_KEY&q=${city}&aqi=yes`;
 
 
   try {
